@@ -1,0 +1,155 @@
+<!--
+Déléguer les générateurs (Generator Delegation) :
+
+Le délégateur de générateur est une fonctionnalité qui permet à un générateur d'invoquer un autre générateur. Cela se fait en utilisant l'instruction yield*. Voici un exemple :
+
+
+function* generatorA() {
+  yield 1;
+  yield 2;
+}
+
+function* generatorB() {
+  yield* generatorA();
+  yield 3;
+}
+
+const combinedGenerator = generatorB();
+console.log(combinedGenerator.next().value); // 1
+console.log(combinedGenerator.next().value); // 2
+console.log(combinedGenerator.next().value); // 3
+Dans cet exemple, generatorB utilise yield* generatorA() pour déléguer l'itération à generatorA, puis ajoute sa propre valeur (yield 3).
+
+
+
+
+
+const currentEpochTime = Math.floor(new Date().getTime() / 1000);
+console.log(currentEpochTime);
+
+
+Vous multipliez le temps Epoch par 1000 car Date utilise des millisecondes. Vous obtiendrez alors un objet Date représentant la date et l'heure correspondantes.
+
+Convertir une date en temps Epoch :
+
+const date = new Date("2021-01-01T00:00:00Z"); // Date de référence (1er janvier 2021 00:00:00 UTC)
+const epochTimeFromDate = Math.floor(date.getTime() / 1000);
+console.log(epochTimeFromDate);
+Dans cet exemple, nous prenons une date de référence et calculons son temps Epoch.
+
+Le temps Epoch est couramment utilisé pour représenter des timestamps dans de nombreux systèmes informatiques, bases de données, et formats de date dans divers langages de programmation.
+
+-->
+
+<!--
+Les modules JavaScript sont une manière de structurer le code en utilisant des fichiers distincts pour différentes parties du programme. Les modules permettent de séparer le code en petites parties réutilisables, ce qui améliore la maintenabilité et la lisibilité du code.
+
+Voici comment utiliser les modules en JavaScript :
+
+1 Exporter des fonctions ou variables depuis un module :
+
+Fichier math.js:
+
+// math.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+
+// main.js
+import { add, subtract } from './math.js';
+
+console.log(add(5, 3));      // Utiliser la fonction add du module math.js
+console.log(subtract(8, 2)); // Utiliser la fonction subtract du module math.js
+
+
+****************************************************
+
+
+2-Exporter une fonction ou variable par défaut :
+
+Fichier math.js :
+// math.js
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+
+export default add; // Exporter la fonction add par défaut
+
+
+Fichier principal :
+
+// main.js
+import add from './math.js'; // Importer la fonction add par défaut
+
+console.log(add(5, 3)); // Utiliser la fonction add du mo
+
+
+
+*****************************************************
+
+
+3-Importer tout le module :
+
+Fichier math.js :
+
+javascript
+
+// math.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+Fichier principal :
+
+javascript
+// main.js
+import * as mathModule from './math.js'; // Importer tout le module math.js
+
+console.log(mathModule.add(5, 3));      // Utiliser la fonction add du module math.js
+console.log(mathModule.subtract(8, 2)); // Utiliser la f
+
+----------------------------------------------------
+Remarques importantes :
+L'exportation par défaut peut être importée avec n'importe quel nom lors de l'importation.
+Les modules ne sont pas seulement pour le côté client (navigateur), mais ils sont également largement utilisés dans Node.js pour organiser le code.
+Les chemins d'importation ('./math.js') peuvent varier en fonction de la structure de votre projet.
+Assurez-vous que votre environnement de développement prend en charge les modules, car certaines configurations peuvent nécessiter des outils supplémentaires (par exemple, webpack, Babel) pour gérer les modules ES6.
+-->
+
+<!--alias
+Alias pour une Variable:
+
+let originalVariableName = 42;
+let aliasName = originalVariableName;
+
+console.log(aliasName); // 42
+Alias pour une Fonction:
+
+function longFunctionName() {
+  console.log("This is a long function name.");
+}
+
+// Création d'un alias pour la fonction
+let shortName = longFunctionName;
+
+// Utilisation de l'alias
+shortName(); // This is a long function name.-->
+
+
+<!--
+    Performance.now() est une méthode en JavaScript qui renvoie un temps de haute résolution, mesuré en millisecondes depuis le début de l'exécution de la page. Elle est souvent utilisée pour mesurer la performance d'une portion de code ou le temps écoulé entre deux points dans votre application. Voici un exemple d'utilisation :
+
+
+// Enregistrez le temps de départ
+const startTime = performance.now();
+
+// Exécutez le code que vous souhaitez mesurer
+for (let i = 0; i < 1000000; i++) {
+  // Faites quelque chose de coûteux en temps ici
+}
+
+// Enregistrez le temps d'arrêt
+const endTime = performance.now();
+
+// Calculez la durée écoulée
+const elapsedTime = endTime - startTime;
+
+console.log(`Le code a pris ${elapsedTime} millisecondes.`);
+-->
